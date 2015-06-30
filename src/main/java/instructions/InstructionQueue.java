@@ -58,10 +58,34 @@ public class InstructionQueue {
                 int a1 = message1.getInstructionType();
                 int a2 = message2.getInstructionType();
 
-                  if(a1 > a2) {
-                      return 1;
-                  }
-                  return -1;
+                //HIGH
+                if(a1 <= 10) {
+                    if(a2 > 10) {
+                        return -1;
+                    }
+                    return 0;
+                }
+                // MED
+                if(a1 > 10 && a1 <= 90) {
+
+                    if(a2 <= 10) {
+                        return 1;
+                    }
+                    if(a2 > 90) {
+                        return -1;
+                    }
+                    return 0;
+
+                }
+                // LOW
+                if(a1 > 90) {
+                    if(a2 <= 90) {
+                        return 1;
+                    }
+                    return 0;
+                }
+                // failed to match, throw exception?
+                return 0;
             }
        }
 
